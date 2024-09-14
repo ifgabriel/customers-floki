@@ -1,57 +1,25 @@
-import { ComponentProps, createContext, useContext, useState } from 'react';
+import { ComponentProps } from 'react';
 import { joinClassNames } from '../../utils';
 import styles from './styles.module.scss';
 
-const RadioGroupContext = createContext<{
-    value: unknown
-    onChange: (value: unknown) => void;
-} | undefined>(undefined);
 
-
-interface GroupProps<T extends string> extends Omit<ComponentProps<'div'>, 'onChange'> {
-    defaultValue?: T;
-    onChange?: (value: T) => void;
-}
-
-const Group = <T extends string>({ defaultValue, className, onChange, children }: GroupProps<T>) => {
-    const [value, setValue] = useState<T | undefined>(defaultValue);
-
-    const handleChange = (newValue: string) => {
-        setValue(newValue);
-        onChange?.(newValue);
-    };
-
+const Group = ({ className, ...props }: ComponentProps<'fieldset'>) => {
     return (
-        <RadioGroupContext.Provider value={{ value, onChange: handleChange }}>
-            <div className={joinClassNames(styles.group, className)}>{children}</div>
-        </RadioGroupContext.Provider>
+        <fieldset className={joinClassNames(styles.group, className)} {...props} />
     );
 };
 
-interface ButtonProps<T extends string> extends Omit<ComponentProps<'input'>, 'type' | 'value'> {
-    value: T
-}
 
-const Button = <T extends string>({ value, children }: ButtonProps<T>) => {
-    const context = useContext(RadioGroupContext);
+const Button = ({ children, ...props }: Omit<ComponentProps<'input'>, 'type'>) => (
+    <label>
+        {children}
+        <input
+            type="radio"
+            {...props}
+        />
+    </label>
+);
 
-    if (!context) {
-        throw new Error('Radio must be used within a RadioGroup');
-    }
-
-    const { value: selectedValue, onChange } = context;
-
-    return (
-        <label>
-            <input
-                type="radio"
-                checked={selectedValue === value}
-                onChange={() => onChange(value)}
-            />
-            {children}
-        </label>
-    );
-};
 
 const Radio = {
     Button,

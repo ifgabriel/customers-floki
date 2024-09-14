@@ -1,13 +1,26 @@
-.input {
-  padding: 17px 16px;
-  background-color: #fff;
+.container {
+  position: relative;
 
-  color: #8e8e93;
-  border: 1px solid #8e8e93;
+  input {
+    padding: 17px 16px;
+    background-color: #fff;
 
-  font-size: 12px;
-
-  &::placeholder {
     color: #8e8e93;
+    border: 1px solid #8e8e93;
+
+    font-size: 12px;
+
+    &::placeholder {
+      color: #8e8e93;
+    }
+  }
+
+  svg {
+    top: 50%;
+    right: 16px;
+    position: absolute;
+    transform: translateY(-50%);
+
+    stroke: #8e8e93;
   }
 }

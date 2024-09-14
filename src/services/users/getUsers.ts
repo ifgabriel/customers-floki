@@ -1,24 +1,29 @@
 import { useQuery } from "@tanstack/react-query"
 
-import { RemoteUser } from "../../data"
+import { RemoteRequestInfo, RemoteUser } from "../../data"
 import { Api, buildUrl } from "../utils"
+import { converter } from "./converter"
 import endpoints from "./endpoints"
 
 interface GetUserParams {
     name?: string,
     gender?: 'male' | 'female',
+    results?: number,
+    page?: number
 }
 
 
-const getUsers = ({ name, gender }: GetUserParams) => {
-    return Api.get<GetUserParams, { results: RemoteUser[] }>(buildUrl({ route: endpoints.getUsers, queryParams: { name, gender, results: 15 } })).then(({ data }) => data?.results)
+const getUsers = ({ name, gender, results, page }: GetUserParams) => {
+    return Api.get<GetUserParams, { results: RemoteUser[], info: RemoteRequestInfo }>(
+        buildUrl({ route: endpoints.getUsers, queryParams: { name, gender, results, page } })
+    ).then(({ data }) => ({ info: data?.info, results: converter(data?.results) }))
 }
 
-export const useGetUsers = ({ name, gender }: GetUserParams) => {
+export const useGetUsers = (params: GetUserParams) => {
     return useQuery({
-        queryKey: ['users', name, gender],
+        queryKey: ['users', params],
         queryFn: () => {
-            return getUsers({ name, gender })
-        }
+            return getUsers(params)
+        },
     })
 }

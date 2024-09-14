@@ -1,16 +1,10 @@
-export type UserGender = 'female' | 'male'
+export type UserGender = 'female' | 'male' | 'unknown'
 
 export type User = {
+    id: string,
     gender: UserGender,
-    name: {
-        first: string,
-        last: string,
-    },
-    location: {
-        country: string,
-    },
+    name: string,
+    location: string,
     email: string,
-    picture: {
-        medium: string,
-    },
+    picture: string
 }

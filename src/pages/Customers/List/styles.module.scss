@@ -1,11 +1,79 @@
 .container {
     padding: 24px;
 
+    width: 100vw;
+    height: 100vh;
+
+    gap: 24px;
+    display: grid;
+    grid-template-rows: 52px 1fr 32px;
+
     header {
         gap: 24px;
         display: flex;
         align-items: center;
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    .tableContainer {
+        overflow: auto;
+    }
+
+    table {
+        width: 100%;
+
+        tr {
+            border-bottom: 1px solid #f7f7f7;
+        }
+
+        th {
+            text-align: left;
+            font-size: 12px;
+            color: #8c91a2;
+            font-weight: 500;
+        }
+
+        td {
+            font-size: 12px;
+            color: #30373d;
+            font-weight: 500;
+
+            padding: 12px;
+
+            > div {
+                gap: 20px;
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+                object-fit: cover;
+            }
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        table {
+            width: 100%;
+            display: block;
+            overflow-x: auto;
+
+            thead {
+                display: none;
+            }
+
+            tr,
+            td {
+                display: block;
+            }
+
+            td {
+                padding: 16px;
+            }
+        }
     }
 }
