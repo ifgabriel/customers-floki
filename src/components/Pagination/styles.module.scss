@@ -1,6 +1,7 @@
 .container {
     gap: 16px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     font-size: 14px;
@@ -85,6 +86,16 @@
                     background-color: #f2f5f8;
                 }
             }
+        }
+    }
+
+    @media screen and (max-width: 732px) {
+        >div:first-of-type {
+            display: none;
+        }
+
+        .iconButton {
+            display: none;
         }
     }
 }

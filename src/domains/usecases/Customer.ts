@@ -1,8 +1,8 @@
-export type UserGender = 'female' | 'male' | 'unknown'
+export type CustomerGender = 'female' | 'male'
 
-export type User = {
+export type Customer = {
     id: string,
-    gender: UserGender,
+    gender: CustomerGender,
     name: string,
     location: string,
     email: string,

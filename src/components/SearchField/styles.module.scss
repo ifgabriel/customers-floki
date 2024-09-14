@@ -2,7 +2,8 @@
   position: relative;
 
   input {
-    padding: 17px 16px;
+    width: 100%;
+    padding: 16px;
     background-color: #fff;
 
     color: #8e8e93;
@@ -20,6 +21,10 @@
     right: 16px;
     position: absolute;
     transform: translateY(-50%);
+
+    width: 20px;
+    height: 20px;
+
 
     stroke: #8e8e93;
   }

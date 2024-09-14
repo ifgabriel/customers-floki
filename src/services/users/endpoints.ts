@@ -1,5 +1,5 @@
 const endpoints = {
-  getUsers: '/',
+  getCustomers: '/',
 }
 
 export default endpoints

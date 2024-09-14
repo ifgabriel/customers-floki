@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# Frontend Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Summary
 
-Currently, two official plugins are available:
+This project involves creating a user interface to display a list of users in a table format. The data for the users will be fetched from the RandomUser API. The table will support filtering by name and gender, as well as pagination controls. The design for the UI follows the specifications provided in the linked Figma file.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements
 
-## Expanding the ESLint configuration
+### 1. Customer Table Implementation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Create a responsive table** to display user data.
+- **Fetch user data** from the RandomUser API.
+- **Display relevant user details**, such as name, gender, and email.
 
-- Configure the top-level `parserOptions` property like this:
+### 2. Filtering
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Implement filtering functionality** by name and gender.
+- **Ensure dynamic updates** to the displayed user list based on the selected filters.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 3. Pagination
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Implement pagination controls** to navigate through the user list.
+- **Display a limited number of users per page** and allow navigation to different pages.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### 4. Design
+
+- Follow the design specifications provided in the [Figma file](#) (replace with the actual link).
+
+### 5. State Management
+
+- Use a state management library such as **Jotai** or **Zustand** to manage the selection and removal of users from the table.
+
+### 6. Unit Testing (Bonus)
+
+- Write unit tests for components and functionality to ensure **reliability and maintainability**.
+
+## Bonus Points
+
+- Efficient and clean code with a **clear separation of concerns**.
+- **Implement accessibility best practices**.
+- **Handle edge cases**, such as empty states and error handling.
+
+## Getting Started
+
+To run the application, ensure you have Node.js version 18 installed. Follow these steps:
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the application**
+   ```bash
+   npm run dev
+   ``` 
+4. **Run tests**
+   ```bash
+   npm test
+   ``` 

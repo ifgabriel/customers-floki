@@ -1,22 +1,18 @@
 import { Search } from 'lucide-react'
 import { ComponentProps, forwardRef } from 'react'
-import joinClassNames from '../../utils/joinClassNames'
+
+import { joinClassNames } from '../../utils'
 import styles from './styles.module.scss'
 
-const Input = forwardRef<HTMLInputElement, ComponentProps<'input'>>(
+const SearchField = forwardRef<HTMLInputElement, ComponentProps<'input'>>(
   ({ className, ...props }, ref) => (
-    <div className={styles.container}>
-      <input
-        ref={ref}
-        type='search'
-        {...props}
-        className={joinClassNames(styles.input, className)}
-      />
+    <div className={joinClassNames(styles.container, className)}>
+      <input ref={ref} type='text' {...props} />
       <Search />
-    </div>
+    </div >
   ),
 )
 
-Input.displayName = 'Input'
+SearchField.displayName = 'SearchField'
 
-export default Input
+export default SearchField

@@ -2,29 +2,27 @@ import axios, { AxiosResponse } from 'axios'
 import { HttpClient, HttpRequest, HttpResponse } from '../data/protocols/http'
 
 export function AxiosHttpClient(): HttpClient {
-    const instance = axios.create()
+  const instance = axios.create()
 
-    const request = async (data: HttpRequest): Promise<HttpResponse> => {
-        let axiosResponse: AxiosResponse
+  const request = async (data: HttpRequest): Promise<HttpResponse> => {
+    let axiosResponse: AxiosResponse
 
-        try {
-            axiosResponse = await instance.request({
-                url: data.url,
-                data: data.body,
-                method: data.method,
-                headers: data.headers,
-            })
-        } catch (error) {
-            axiosResponse = error.response
-        }
-
-        axiosResponse.status === 401
-
-        return {
-            statusCode: axiosResponse.status,
-            data: axiosResponse.data,
-        }
+    try {
+      axiosResponse = await instance.request({
+        url: data.url,
+        data: data.body,
+        method: data.method,
+        headers: data.headers,
+      })
+    } catch (error) {
+      axiosResponse = error.response
     }
 
-    return { request }
+    return {
+      statusCode: axiosResponse.status,
+      data: axiosResponse.data,
+    }
+  }
+
+  return { request }
 }

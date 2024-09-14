@@ -3,13 +3,13 @@ import { Controller, useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
 
 import { Pagination, Radio, SearchField } from '../../../components'
-import { UserGender } from '../../../domains/usecases'
-import { useGetUsers } from '../../../services/users/getUsers'
+import { CustomerGender } from '../../../domains/usecases'
+import { useGetCustomers } from '../../../services/users/getCustomers'
 import { handleRenderState } from '../../../utils'
 import styles from './styles.module.scss'
 
 interface FilterProps {
-  gender?: UserGender,
+  gender?: CustomerGender,
   name?: string
 }
 const List = () => {
@@ -24,12 +24,12 @@ const List = () => {
     register,
   } = useForm<FilterProps>()
 
-  const { data, isLoading, isError } = useGetUsers({ ...watch(), page, results: itemsPerPage })
+  const { data, isLoading, isError } = useGetCustomers({ ...watch(), page, results: itemsPerPage })
 
   return (
     <main className={styles.container}>
       <header>
-        <SearchField placeholder="Search Name" {...register('name')} />
+        <SearchField className={styles.searchField} placeholder="Search Name" {...register('name')} />
         <div>
           <Radio.Group id='gender'>
             <Controller

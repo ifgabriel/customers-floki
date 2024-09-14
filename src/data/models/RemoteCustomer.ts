@@ -1,7 +1,7 @@
-export type RemoteUserGender = 'female' | 'male'
+export type RemoteCustomerGender = 'female' | 'male'
 
-export type RemoteUser = {
-    gender: RemoteUserGender,
+export type RemoteCustomer = {
+    gender: RemoteCustomerGender,
     name: {
         title: string,
         first: string,

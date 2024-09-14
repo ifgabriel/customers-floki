@@ -24,7 +24,6 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       "indent": ["error", 2],
-      'max-len': ["error", { code: 80, tab: 2 }]
     },
   },
 )
