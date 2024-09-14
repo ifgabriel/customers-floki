@@ -63,6 +63,7 @@ const Pagination = ({ totalPages }: PaginationProps) => {
       </div>
       <div>
         <button
+          disabled={page === 1}
           aria-label="First page"
           onClick={() => handlePageChange(1)}
           className={styles.iconButton}
