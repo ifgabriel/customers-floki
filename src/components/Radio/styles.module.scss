@@ -1,0 +1,28 @@
+.input {
+  padding: 8px;
+  background-color: var(--background-alpha);
+
+  color: var(--element-default);
+  font-size: 14px;
+  font-weight: 400;
+
+  outline: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-default);
+
+  &:focus {
+    border-color: var(--border-medium);
+  }
+
+  &::placeholder {
+    color: var(--element-medium);
+  }
+
+  &:disabled,
+  &:read-only {
+    cursor: not-allowed;
+    background-color: var(--applied-field-disabled);
+    border-color: var(--border-disabled);
+  }
+}
